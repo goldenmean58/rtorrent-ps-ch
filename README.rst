@@ -42,6 +42,7 @@ Over latest ``rtorrent v0.9.8/0.13.8``:
 -  `partial system.file.allocate.set=1 fix <https://github.com/chros73/rtorrent-ps/issues/68>`_
 
 Merged into ``rtorrent v0.9.8/0.13.8``:
+
 -  `list method type fix <https://github.com/chros73/rtorrent-ps-ch/issues/154>`_
 -  `min_peers* settings fix <https://github.com/chros73/rtorrent-ps/issues/126>`_
 -  `input history <https://github.com/chros73/rtorrent-ps/issues/83>`_
@@ -98,6 +99,7 @@ Compiling instructions
 -----------------------
 
 See `Debian Install From Source - The Easy Way <docs/DebianInstallFromSourceTheEasyWay.rst>`_ to get ``rTorrent-PS-CH`` and ``pyrocore`` utilities up and running in ``tmux`` in 20 minutes.
+Also @QDesjardin has created source packages for Arch Linux that can be `compiled and installed on Arch <docs/ArchInstallFromSource.rst>`_ easily.
 
 
 Binary tarballs, packages
