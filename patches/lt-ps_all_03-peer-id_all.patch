@@ -1,0 +1,15 @@
+diff --git a/src/tracker/tracker_http.cc b/src/tracker/tracker_http.cc
+index 1bf94107..04eefd8a 100644
+--- a/src/tracker/tracker_http.cc
++++ b/src/tracker/tracker_http.cc
+@@ -130,9 +130,7 @@ TrackerHttp::send_state(int state) {
+ 
+   request_prefix(&s, m_url);
+ 
+-  *rak::copy_escape_html(info->local_id().begin(), info->local_id().end(), localId) = '\0';
+-
+-  s << "&peer_id=" << localId;
++  s << "&peer_id=" << "-qB4250-A9kxAjmFzISs";
+ 
+   if (m_parent->key())
+     s << "&key=" << std::hex << std::setw(8) << std::setfill('0') << m_parent->key() << std::dec;
