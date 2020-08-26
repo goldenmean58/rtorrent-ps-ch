@@ -1,15 +1,15 @@
-diff --git a/src/tracker/tracker_http.cc b/src/tracker/tracker_http.cc
-index 1bf94107..04eefd8a 100644
---- a/src/tracker/tracker_http.cc
-+++ b/src/tracker/tracker_http.cc
-@@ -130,9 +130,7 @@ TrackerHttp::send_state(int state) {
+diff --git a/configure.ac b/configure.ac
+index 4ed08124..14f88620 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -3,8 +3,8 @@ AC_INIT(libtorrent, 0.13.8, sundell.software@gmail.com)
+ LT_INIT([disable-static])
  
-   request_prefix(&s, m_url);
+ dnl Find a better way to do this
+-AC_DEFINE(PEER_NAME, "-lt0D80-", Identifier that is part of the default peer id)
+-AC_DEFINE(PEER_VERSION, "lt\x0D\x80", 4 byte client and version identifier for DHT)
++AC_DEFINE(PEER_NAME, "-qB4250-", Identifier that is part of the default peer id)
++AC_DEFINE(PEER_VERSION, "qB\x2A\x32", 4 byte client and version identifier for DHT)
  
--  *rak::copy_escape_html(info->local_id().begin(), info->local_id().end(), localId) = '\0';
--
--  s << "&peer_id=" << localId;
-+  s << "&peer_id=" << "-qB4250-A9kxAjmFzISs";
- 
-   if (m_parent->key())
-     s << "&key=" << std::hex << std::setw(8) << std::setfill('0') << m_parent->key() << std::dec;
+ LIBTORRENT_CURRENT=21
+ LIBTORRENT_REVISION=0
