@@ -98,6 +98,12 @@ Notes about ``git`` build script parameter:
 Compiling instructions
 -----------------------
 
+For static building, run the code below first at this project's root directory to apply the static building patch:
+
+.. code-block:: shell
+
+   quilt push rtorrent-static-build
+
 See `Debian Install From Source - The Easy Way <docs/DebianInstallFromSourceTheEasyWay.rst>`_ to get ``rTorrent-PS-CH`` and ``pyrocore`` utilities up and running in ``tmux`` in 20 minutes.
 Also @QDesjardin has created source packages for Arch Linux that can be `compiled and installed on Arch <docs/ArchInstallFromSource.rst>`_ easily.
 

@@ -1,0 +1,28 @@
+Index: rtorrent-ps-ch/build.sh
+===================================================================
+--- rtorrent-ps-ch.orig/build.sh
++++ rtorrent-ps-ch/build.sh
+@@ -411,6 +411,7 @@ build_cares() { # Build direct dependenc
+     bold '~~~~~~~~~~~~~~~~~~~~~~~~   Building c-ares   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+     ( set +x ; cd "c-ares-$cares_version" \
+         && ./configure --prefix="$build_dir" \
++             -enable-static=yes --enable-shared=no \
+         && $make_bin $make_opts \
+         && $make_bin install \
+         || fail "during building 'c-ares'!" )
+@@ -428,6 +429,7 @@ build_curl() { # Build direct dependency
+         && ./configure --prefix="$build_dir" --enable-ares="$build_dir" --with-ssl --without-nss --without-libssh2 --without-librtmp --without-libidn2 \
+              --disable-ntlm-wb --disable-sspi --disable-threaded-resolver --disable-libcurl-option --disable-manual --disable-gopher --disable-smtp --disable-file \
+              --disable-smb --disable-imap --disable-pop3 --disable-tftp --disable-telnet --disable-dict --disable-rtsp --disable-ldap --disable-ftp \
++             --enable-static=yes --enable-shared=no \
+         && $make_bin $make_opts \
+         && $make_bin install \
+         || fail "during building 'curl'!" )
+@@ -462,6 +464,7 @@ build_lt() { # Build libTorrent
+ 
+     bold '~~~~~~~~~~~~~~~~~~~~~~~~   Building libTorrent   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+     ( set +x ; cd "libtorrent-$lt_version" \
++        && echo "LIBS += -ldl" >> src/Makefile.am \
+         && ./autogen.sh \
+         && ./configure --prefix="$build_dir" $cfg_opts $cfg_opts_lt \
+         && $make_bin $make_opts \
