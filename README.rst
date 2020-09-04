@@ -98,11 +98,18 @@ Notes about ``git`` build script parameter:
 Compiling instructions
 -----------------------
 
-For static building, run the code below first at this project's root directory to apply the static building patch:
+For static building, run the code below at this project's root directory to apply the static building patch and build with options:
 
 .. code-block:: shell
 
    quilt push rtorrent-static-build
+   optimize_build=no cfg_opts_lt='--disable-debug --enable-static=yes --enable-shared=no' cfg_opts_rt='--enable-static=yes --enable-shared=no --disable-debug --enable-ipv6 LDFLAGS=--static' ./build.sh ch ; strip -s rtorrent-0.9.8/src/rtorrent
+
+An error occurs when chrpath after static building. But it doesn't matter if you just want the static linked binary.
+
+The static linked executable binary's path is ``rtorrent-0.9.8/src/rtorrent``
+
+For dynamic build:
 
 See `Debian Install From Source - The Easy Way <docs/DebianInstallFromSourceTheEasyWay.rst>`_ to get ``rTorrent-PS-CH`` and ``pyrocore`` utilities up and running in ``tmux`` in 20 minutes.
 Also @QDesjardin has created source packages for Arch Linux that can be `compiled and installed on Arch <docs/ArchInstallFromSource.rst>`_ easily.
