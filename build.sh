@@ -206,7 +206,7 @@ tarballs+=("https://github.com/rakshasa/rtorrent/releases/download/v$rt_version/
 tarballs+=("https://github.com/rakshasa/rtorrent/releases/download/v$rt_version/rtorrent-$rt_version.tar.gz")
 
 # Get xmlrpc-c from svn if it's not mirrored
-[[ ! "$xmlrpc_rev" =~ ^(2985|2912|2775)$ ]] && xmlrpc_svn_url="http://svn.code.sf.net/p/xmlrpc-c/code/$xmlrpc_tree@$xmlrpc_rev"
+xmlrpc_svn_url="http://svn.code.sf.net/p/xmlrpc-c/code/$xmlrpc_tree@$xmlrpc_rev"
 
 
 # Source package md5 hashes
