@@ -4,6 +4,12 @@ Debian Install From Tarballs, Packages
 .. contents:: **Contents**
 
 
+Important!
+------------
+
+Due to shutdown of Bintray, none of the built packages are available anymore.
+
+
 Introduction
 ------------
 
