@@ -8,8 +8,8 @@ index 4ed08124..14f88620 100644
  dnl Find a better way to do this
 -AC_DEFINE(PEER_NAME, "-lt0D80-", Identifier that is part of the default peer id)
 -AC_DEFINE(PEER_VERSION, "lt\x0D\x80", 4 byte client and version identifier for DHT)
-+AC_DEFINE(PEER_NAME, "-qB4250-", Identifier that is part of the default peer id)
-+AC_DEFINE(PEER_VERSION, "qB\x2A\x32", 4 byte client and version identifier for DHT)
++AC_DEFINE(PEER_NAME, "-qB4190-", Identifier that is part of the default peer id)
++AC_DEFINE(PEER_VERSION, "qB\x41\x90", 4 byte client and version identifier for DHT)
  
  LIBTORRENT_CURRENT=21
  LIBTORRENT_REVISION=0
