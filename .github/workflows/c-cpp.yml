@@ -1,0 +1,19 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: patch
+      run: quilt push -a
+    - name: build
+      run: optimize_build=no cfg_opts_lt='--disable-debug' cfg_opts_rt='--disable-debug --enable-ipv6' ./build.sh ch
