@@ -1,5 +1,10 @@
 # Change Log
 
+## [1.8.4-0.9.8](https://github.com/chros73/rtorrent-ps-ch/tree/1.8.4-0.9.8) (2021-09-21)
+**Fixed bugs:**
+
+- Fix getting xmlrpc-c in build.sh due to shutdown of Bintray [\#170](https://github.com/chros73/rtorrent-ps-ch/issues/170)
+
 ## [1.8.3-0.9.8](https://github.com/chros73/rtorrent-ps-ch/tree/1.8.3-0.9.8) (2019-07-27)
 **Implemented enhancements:**
 

@@ -201,7 +201,7 @@ display_env_vars() { # Display env vars
 # Sources
 tarballs=("http://c-ares.haxx.se/download/c-ares-$cares_version.tar.gz")
 tarballs+=("http://curl.haxx.se/download/curl-$curl_version.tar.gz")
-tarballs+=("https://dl.bintray.com/chros73/$rt_ps_ch_dirname/pool/x/xmlrpc-c-$xmlrpc_tree/xmlrpc-c-$xmlrpc_tree-$xmlrpc_rev-src.tgz")
+tarballs+=("https://github.com/chros73/$rt_ps_ch_dirname/releases/download/1.8.3-0.9.8/xmlrpc-c-$xmlrpc_tree-$xmlrpc_rev-src.tgz")
 tarballs+=("https://github.com/rakshasa/rtorrent/releases/download/v$rt_version/libtorrent-$lt_version.tar.gz")
 tarballs+=("https://github.com/rakshasa/rtorrent/releases/download/v$rt_version/rtorrent-$rt_version.tar.gz")
 
