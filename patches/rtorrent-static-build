@@ -2,7 +2,18 @@ Index: rtorrent-ps-ch/build.sh
 ===================================================================
 --- rtorrent-ps-ch.orig/build.sh
 +++ rtorrent-ps-ch/build.sh
-@@ -199,7 +199,7 @@ display_env_vars() { # Display env vars
+@@ -164,6 +164,10 @@ case "$gcc_type" in
+         ;;
+ esac
+ 
++build_type=''
++if uname -a | grep 'aarch64' &>/dev/null; then
++    build_type='arm-linux'
++fi
+ 
+ set_compiler_flags() { # Set final compiler flags
+     export PKG_CONFIG_PATH="$build_dir/lib/pkgconfig${PKG_CONFIG_PATH:+:}${PKG_CONFIG_PATH}"
+@@ -199,7 +203,7 @@ display_env_vars() { # Display env vars
  
  
  # Sources
@@ -11,7 +22,7 @@ Index: rtorrent-ps-ch/build.sh
  tarballs+=("http://curl.haxx.se/download/curl-$curl_version.tar.gz")
  tarballs+=("https://github.com/chros73/$rt_ps_ch_dirname/releases/download/1.8.3-0.9.8/xmlrpc-c-$xmlrpc_tree-$xmlrpc_rev-src.tgz")
  tarballs+=("https://github.com/rakshasa/rtorrent/releases/download/v$rt_version/libtorrent-$lt_version.tar.gz")
-@@ -411,6 +411,7 @@ build_cares() { # Build direct dependenc
+@@ -411,6 +415,7 @@ build_cares() { # Build direct dependenc
      bold '~~~~~~~~~~~~~~~~~~~~~~~~   Building c-ares   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
      ( set +x ; cd "c-ares-$cares_version" \
          && ./configure --prefix="$build_dir" \
@@ -19,7 +30,7 @@ Index: rtorrent-ps-ch/build.sh
          && $make_bin $make_opts \
          && $make_bin install \
          || fail "during building 'c-ares'!" )
-@@ -428,6 +429,7 @@ build_curl() { # Build direct dependency
+@@ -428,6 +433,7 @@ build_curl() { # Build direct dependency
          && ./configure --prefix="$build_dir" --enable-ares="$build_dir" --with-ssl --without-nss --without-libssh2 --without-librtmp --without-libidn2 \
               --disable-ntlm-wb --disable-sspi --disable-threaded-resolver --disable-libcurl-option --disable-manual --disable-gopher --disable-smtp --disable-file \
               --disable-smb --disable-imap --disable-pop3 --disable-tftp --disable-telnet --disable-dict --disable-rtsp --disable-ldap --disable-ftp \
@@ -27,16 +38,16 @@ Index: rtorrent-ps-ch/build.sh
          && $make_bin $make_opts \
          && $make_bin install \
          || fail "during building 'curl'!" )
-@@ -441,7 +443,7 @@ build_xmlrpc() { # Build direct dependen
+@@ -441,7 +447,7 @@ build_xmlrpc() { # Build direct dependen
  
      bold '~~~~~~~~~~~~~~~~~~~~~~~~   Building xmlrpc-c   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
      ( set +x ; cd "xmlrpc-c-$xmlrpc_tree-$xmlrpc_rev" \
 -        && ./configure --prefix="$build_dir" --with-libwww-ssl --disable-wininet-client --disable-curl-client --disable-libwww-client --disable-abyss-server \
-+        && ./configure --build=$(dpkg-architecture -qDEB_BUILD_GNU_TYPE) --prefix="$build_dir" --with-libwww-ssl --disable-wininet-client --disable-curl-client --disable-libwww-client --disable-abyss-server \
++        && ./configure --build="$build_type" --prefix="$build_dir" --with-libwww-ssl --disable-wininet-client --disable-curl-client --disable-libwww-client --disable-abyss-server \
               --disable-cgi-server --disable-cplusplus \
          && $make_bin $make_opts \
          && $make_bin install \
-@@ -462,6 +464,7 @@ build_lt() { # Build libTorrent
+@@ -462,6 +468,7 @@ build_lt() { # Build libTorrent
  
      bold '~~~~~~~~~~~~~~~~~~~~~~~~   Building libTorrent   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
      ( set +x ; cd "libtorrent-$lt_version" \
