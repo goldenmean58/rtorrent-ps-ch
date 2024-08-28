@@ -2,6 +2,15 @@ Index: rtorrent-ps-ch/build.sh
 ===================================================================
 --- rtorrent-ps-ch.orig/build.sh
 +++ rtorrent-ps-ch/build.sh
+@@ -199,7 +199,7 @@ display_env_vars() { # Display env vars
+ 
+ 
+ # Sources
+-tarballs=("http://c-ares.haxx.se/download/c-ares-$cares_version.tar.gz")
++tarballs=("https://github.com/c-ares/c-ares/releases/download/cares-1_14_0/c-ares-1.14.0.tar.gz")
+ tarballs+=("http://curl.haxx.se/download/curl-$curl_version.tar.gz")
+ tarballs+=("https://github.com/chros73/$rt_ps_ch_dirname/releases/download/1.8.3-0.9.8/xmlrpc-c-$xmlrpc_tree-$xmlrpc_rev-src.tgz")
+ tarballs+=("https://github.com/rakshasa/rtorrent/releases/download/v$rt_version/libtorrent-$lt_version.tar.gz")
 @@ -411,6 +411,7 @@ build_cares() { # Build direct dependenc
      bold '~~~~~~~~~~~~~~~~~~~~~~~~   Building c-ares   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
      ( set +x ; cd "c-ares-$cares_version" \
@@ -18,6 +27,15 @@ Index: rtorrent-ps-ch/build.sh
          && $make_bin $make_opts \
          && $make_bin install \
          || fail "during building 'curl'!" )
+@@ -441,7 +443,7 @@ build_xmlrpc() { # Build direct dependen
+ 
+     bold '~~~~~~~~~~~~~~~~~~~~~~~~   Building xmlrpc-c   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+     ( set +x ; cd "xmlrpc-c-$xmlrpc_tree-$xmlrpc_rev" \
+-        && ./configure --prefix="$build_dir" --with-libwww-ssl --disable-wininet-client --disable-curl-client --disable-libwww-client --disable-abyss-server \
++        && ./configure --build=$(dpkg-architecture -qDEB_BUILD_GNU_TYPE) --prefix="$build_dir" --with-libwww-ssl --disable-wininet-client --disable-curl-client --disable-libwww-client --disable-abyss-server \
+              --disable-cgi-server --disable-cplusplus \
+         && $make_bin $make_opts \
+         && $make_bin install \
 @@ -462,6 +464,7 @@ build_lt() { # Build libTorrent
  
      bold '~~~~~~~~~~~~~~~~~~~~~~~~   Building libTorrent   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
